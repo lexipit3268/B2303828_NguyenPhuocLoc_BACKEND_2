@@ -59,6 +59,7 @@ exports.update = async (req, res, next) => {
     if (!document) {
       return next(new ApiError(404, "Contact not found"));
     }
+    return res.send({ message: "Contact was updated successfully" });
   } catch (error) {
     return next(new ApiError(500, `Error updating contact with id = ${req.params.id}`));
   }
