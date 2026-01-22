@@ -23,7 +23,7 @@ class ContactService {
       const result = await this.Contact.findOneAndUpdate(
          contact,
          { $set: { favorite: contact.favorite === true } },
-         { ReturnDocument: "after", upsert: true }
+         { returnDocument: "after", upsert: true }
       );
       return result;
    }
@@ -55,7 +55,7 @@ class ContactService {
          { $set: update },
          { returnDocument: "after" }
       );
-      return result.value;
+      return result.value || result;
    }
 
    async delete(id) {
